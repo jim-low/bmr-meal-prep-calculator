@@ -1,0 +1,20 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+.rt-RadioGroupItem {
+    border: 1px solid black;
+    padding: 0.5rem 1.5rem;
+    border-radius: 5px;
+}
+.rt-RadioGroupItem:where(button[aria-checked=false]) {
+    background-color: var(--subtle);
+}
+.rt-RadioGroupItem button {
+    display: none;
+}
