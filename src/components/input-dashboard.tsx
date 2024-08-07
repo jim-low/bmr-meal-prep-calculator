@@ -2,6 +2,7 @@ import { Box, Button, Flex, RadioGroup } from "@radix-ui/themes"
 import UserInput from "./user-input"
 import { userInfoState } from "../states";
 import { useRecoilState } from "recoil";
+import { calculateBMR } from "../functions";
 
 const InputDashboard = () => {
     const [userInfo, setUserInfo] = useRecoilState(userInfoState);
@@ -11,6 +12,15 @@ const InputDashboard = () => {
             return {
                 ...prev,
                 [category]: ["name", "gender"].includes(category) ? e : +e
+            }
+        })
+    }
+
+    function handleCalculate() {
+        setUserInfo(prev => {
+            return {
+                ...prev,
+                bmr: calculateBMR(prev)
             }
         })
     }
@@ -33,7 +43,7 @@ const InputDashboard = () => {
             </RadioGroup.Root>
             <Flex align="center" gap="3">
                 <Button color="red">Restart</Button>
-                <Button>Calculate</Button>
+                <Button onClick={handleCalculate}>Calculate</Button>
             </Flex>
         </Flex>
     )

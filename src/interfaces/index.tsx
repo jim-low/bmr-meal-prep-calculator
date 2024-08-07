@@ -1,4 +1,4 @@
-export type UserGoal = "lose-fat" | "gain-muscle" | "maintain";
+export type UserGoalType = "lose-fat" | "gain-muscle" | "maintain";
 
 export interface IUserInfo {
     name: string;
@@ -7,8 +7,8 @@ export interface IUserInfo {
     age: number;
     gender: "male" | "female";
     bmr?: number;
-    goal?: UserGoal;
-    distribution?: {
+    goal: UserGoalType;
+    distribution: {
         protein: number; // percentage
         carbs: number; // percentage
         fat: number; // percentage
