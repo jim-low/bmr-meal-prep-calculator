@@ -3,12 +3,15 @@ import ReactECharts from 'echarts-for-react';
 import { getChartOptions } from "../functions";
 import { useRecoilState } from "recoil";
 import { userInfoState } from "../states";
+import { useContext } from "react";
+import { MobileContext } from "../contexts/is-mobile-context";
 
 const MacronutrientDistribution = () => {
+    const isMobile = useContext(MobileContext);
     const [userInfo] = useRecoilState(userInfoState);
 
     return (
-        <Flex id="macronutrient-distribution" justify="start" align="center" p="5">
+        <Flex id="macronutrient-distribution" justify="start" align="center" p="5" direction={isMobile ? "column" : "row"}>
             <ReactECharts style={{ width: 400, height: 400 }} option={getChartOptions(userInfo.goal!)} />
 
             <Flex direction="column" justify="center" align="start" flexGrow="1">

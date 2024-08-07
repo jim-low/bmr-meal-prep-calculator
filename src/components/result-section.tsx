@@ -53,7 +53,7 @@ const ResultSection = () => {
     }
 
     return (
-        <Flex flexGrow="1" direction="column" gap="3">
+        <Flex flexGrow="1" direction="column" gap="3" id="result-section">
             <Flex direction="column">
                 <Text as="p" m="0">
                     BMR = (10 × weight in kg) + (6.25 × height in cm) – (5 × age in years)
@@ -77,12 +77,13 @@ const ResultSection = () => {
 
             <RadioGroup.Root
                 value={userInfo.goal}
+                className="goals-selection"
                 onValueChange={(e: UserGoalType) => {
                     setUserGoal(e);
                     handleUpdateDistribution(e);
                 }}
             >
-                <Flex align="center" gap="3">
+                <Flex justify="center" align="center" gap="3">
                     <RadioGroup.Item value="lose-fat">Lose Fat</RadioGroup.Item>
                     <RadioGroup.Item value="gain-muscle">Gain Muscle</RadioGroup.Item>
                     <RadioGroup.Item value="maintain">Maintain</RadioGroup.Item>
